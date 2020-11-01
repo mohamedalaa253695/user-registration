@@ -1,0 +1,41 @@
+
+################
+# Feature list #
+################
+
+1- Registration page with AUth and Validation
+2- Login page  with AUTH and validation
+3- users page that :
+	a-lists all users if is_admin
+	b-list just one user if is_user
+4- user pop-up light box to perform CRUD
+5- Roles page inwhich admin can list roles[for simplicity will just list main two roles [admin-user] ] 
+6- admin can edite the user role to be admin
+
+
+#######################################
+
+###################
+# Database schema #
+##################
+
+users-->[
+	id-->int-->autoincreament
+	role_id-->forign_key
+	name --> varchar(255)
+	email --> varchar(255)
+	password-->varchar(255)
+	phone_number-->int
+	address-->varchar(255)
+
+]
+
+
+roles[
+	id-->int-->autoincreament
+	name-->text
+
+]
+
+#####################################
+
