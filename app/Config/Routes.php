@@ -21,6 +21,66 @@ $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
+//users routes 
+$routes->get('users','UsersController::index');
+$routes->get('users/create','UsersController::create');
+$routes->post('users/create','UsersController::attemptCreate');
+
+$routes->get('users/update/(:num)','UsersController::update/$1');
+
+$routes->post('users/update', 'UsersController::updateUser');
+
+$routes->post('update-user-general-detials', 'UsersController::updateUser');
+$routes->post('update-user-email', 'UsersController::changeUserEmail');
+$routes->get('confirm-user-email', 'UsersController::confirmNewEmail');
+$routes->post('change-user-password', 'UsersController::changePassword');
+
+$routes->get('users/delete/(:num)','UsersController::delete/$1');
+
+//roles routes
+$routes->get('roles','RolesController::index');
+
+$routes->get('roles/create','RolesController::create');
+$routes->post('roles/create','RolesController::attemptCreate');
+
+
+
+$routes->get('roles/update/(:num)','RolesController::update/$1');
+$routes->post('roles/update','RolesController::attemptUpdate');
+
+$routes->get('roles/delete/(:num)','RolesController::delete/$1');
+
+
+
+//Registration
+$routes->get('register', 'RegistrationController::register', ['as' => 'register']);
+$routes->post('register', 'RegistrationController::attemptRegister');
+
+// Activation
+$routes->get('activate-account', 'RegistrationController::activateAccount', ['as' => 'activate-account']);
+
+// Login/out
+$routes->get('login', 'LoginController::login', ['as' => 'login']);
+$routes->post('login', 'LoginController::attemptLogin');
+$routes->get('logout', 'LoginController::logout');
+
+// Forgotten password and reset
+$routes->get('forgot-password', 'PasswordController::forgotPassword', ['as' => 'forgot-password']);
+$routes->post('forgot-password', 'PasswordController::attemptForgotPassword');
+$routes->get('reset-password', 'PasswordController::resetPassword', ['as' => 'reset-password']);
+$routes->post('reset-password', 'PasswordController::attemptResetPassword');
+
+// Account settings
+$routes->get('account', 'AccountController::account', ['as' => 'account']);
+$routes->post('account', 'AccountController::updateAccount');
+
+$routes->post('update-user-details', 'AccountController::updateUserDetails');
+$routes->post('change-email', 'AccountController::changeEmail');
+$routes->get('confirm-email', 'AccountController::confirmNewEmail');
+$routes->post('change-password', 'AccountController::changePassword');
+$routes->post('delete-account', 'AccountController::deleteAccount');
+
+
 
 /**
  * --------------------------------------------------------------------
